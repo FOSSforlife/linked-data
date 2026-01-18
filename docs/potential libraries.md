@@ -15,15 +15,18 @@ author: ChatGPT
 source: https://chatgpt.com/c/696d540a-04a0-832d-a0cc-da182a582428
 repo: linked-data
 ---
-> ChatGPT Prompt: For working on a Clojure web server that is related to the following:
+
+ChatGPT Prompt: For working on a Clojure web server that is related to the following:
 - Obsidian/Markdown notes
 - Linked data
 - Graph databases/graph theory
 - Statistics
 - Links to webpages (including but not limited to Wikipedia, blogs, Reddit, and more)
 - Potentially utilizing futuristic formats like RDF, SPARQL, OWL, and atproto (but exposing their data through plain HTTP endpoints for maximum interoperability)
-> 
-> What might be some useful libraries or paradigms for me to try out in my REPL-driven, flowy design brainstorming process?
+
+What might be some useful libraries or paradigms for me to try out in my REPL-driven, flowy design brainstorming process?
+
+-----
 
 ## Core Paradigms to Lean Into
 
