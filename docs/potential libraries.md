@@ -15,7 +15,7 @@ author: ChatGPT
 source: https://chatgpt.com/c/696d540a-04a0-832d-a0cc-da182a582428
 repo: linked-data
 ---
-> Prompt: For working on a Clojure web server that is related to the following:
+> ChatGPT Prompt: For working on a Clojure web server that is related to the following:
 - Obsidian/Markdown notes
 - Linked data
 - Graph databases/graph theory
