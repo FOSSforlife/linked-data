@@ -1,6 +1,6 @@
 # Linked Data Playground
 
-This project is a kickstart based on the ideas in `docs/potential libraries.md`.
+This project is a kickstart based on the ideas in [this document](docs/potential%20libraries.md).
 
 ## Philosophy
 
