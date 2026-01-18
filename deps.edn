@@ -1,0 +1,10 @@
+{:paths ["src"]
+ :deps {org.clojure/clojure {:mvn/version "1.11.1"}
+        ring/ring {:mvn/version "1.10.0"}
+        metosin/reitit {:mvn/version "0.6.0"}
+        datascript/datascript {:mvn/version "1.5.4"}
+        markdown-clj/markdown-clj {:mvn/version "0.9.91"}
+        hickory/hickory {:mvn/version "0.7.1"}
+        metosin/malli {:mvn/version "0.13.0"}
+        clj-yaml/clj-yaml {:mvn/version "0.4.0"}
+        org.clojure/data.csv {:mvn/version "1.0.1"}}}
