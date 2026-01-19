@@ -2,6 +2,7 @@
  :deps {org.clojure/clojure {:mvn/version "1.11.1"}
         ring/ring {:mvn/version "1.10.0"}
         metosin/reitit {:mvn/version "0.6.0"}
+        metosin/muuntaja {:mvn/version "0.6.8"}
         datascript/datascript {:mvn/version "1.5.4"}
         markdown-clj/markdown-clj {:mvn/version "0.9.91"}
         hickory/hickory {:mvn/version "0.7.1"}

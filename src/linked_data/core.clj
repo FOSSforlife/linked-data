@@ -5,10 +5,12 @@
             [reitit.coercion.malli :as coercion-malli]
             [reitit.swagger :as swagger]
             [reitit.swagger-ui :as swagger-ui]
+            [reitit.ring.middleware.muuntaja :as muuntaja]
+            [muuntaja.core :as m]
             [datascript.core :as d]
             [markdown.core :as md]
             [hickory.core :as hickory]
-            [malli.core :as m]))
+            [malli.core :as malli]))
 
 ;; 1. Data-First / Schema-Last Design
 ;; We'll start with a simple in-memory atom to hold our "notes" for now,
@@ -73,6 +75,26 @@
     {:status 200
      :body {:html html}}))
 
+;; Stubbed JSON Endpoints
+(defn get-graph-stats-handler [_]
+  {:status 200
+   :body {:node_count 42
+          :edge_count 128
+          :density 0.15
+          :last_updated "2023-10-27T10:00:00Z"}})
+
+(defn search-handler [req]
+  (let [query (get-in req [:query-params "q"])]
+    {:status 200
+     :body {:query query
+            :results [{:id "note-5" :score 0.95 :snippet "Matching content..."}
+                      {:id "note-8" :score 0.88 :snippet "Another match..."}]}}))
+
+(defn get-recent-changes-handler [_]
+  {:status 200
+   :body [{:id "note-10" :action "created" :timestamp "2023-10-27T09:30:00Z"}
+          {:id "note-3" :action "updated" :timestamp "2023-10-27T09:15:00Z"}]})
+
 ;; Routes
 (def app
   (ring/ring-handler
@@ -80,13 +102,21 @@
     [["/api"
       ["/notes" {:get list-notes-handler}]
       ["/notes/:id" {:get get-note-handler}]
-      ["/markdown" {:post parse-markdown-handler}]]
+      ["/markdown" {:post parse-markdown-handler}]
+
+      ;; New Stubbed Endpoints
+      ["/stats" {:get get-graph-stats-handler}]
+      ["/search" {:get search-handler}]
+      ["/recent" {:get get-recent-changes-handler}]]
+
      ["/swagger.json"
       {:get {:no-doc true
              :swagger {:info {:title "Linked Data API"}}
              :handler (swagger/create-swagger-handler)}}]]
     {:data {:coercion coercion-malli/coercion
-            :middleware [swagger/swagger-feature]}})
+            :muuntaja m/instance
+            :middleware [swagger/swagger-feature
+                         muuntaja/format-middleware]}})
    (ring/routes
     (swagger-ui/create-swagger-ui-handler {:path "/api-docs"})
     (ring/create-default-handler))))
